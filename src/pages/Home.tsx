@@ -1,3 +1,4 @@
+import type { MouseEvent, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { caseStudies } from '../data/caseStudies'
@@ -6,29 +7,45 @@ import { Brain } from '../components/Brain'
 import { psychColor } from '../components/PsychMeter'
 import '../styles/home.css'
 
-/** How Arpan works with AI. Draft copy: edit to match the real process. */
-const aiSteps = [
+/** How Arpan works with AI, from arpansheth.digital/ai-workflow.html */
+const aiSteps: { title: string; tools: string[]; text: ReactNode; icon: 'search' | 'spark' | 'shield' | 'code' }[] = [
   {
-    title: 'Understand faster',
-    text: 'AI helps me sort interview notes, support tickets and reviews into themes, so I spend my time on the patterns, not the spreadsheet.',
-    icon: 'search' as const,
+    title: 'Making sense of the chaos',
+    tools: ['Claude', 'ChatGPT', 'Stakeholder research'],
+    text: 'The goal is getting to clarity before I open Figma. I use Claude and ChatGPT to break down PRDs, meeting notes and stakeholder feedback, surface gaps and open questions, then take those back into research and workshops.',
+    icon: 'search',
   },
   {
-    title: 'Explore wider',
-    text: 'I sketch the idea, then use AI to push out variations and edge cases I might have missed, before narrowing down with real constraints.',
-    icon: 'spark' as const,
+    title: 'Exploring before committing',
+    tools: ['Figma Make'],
+    text: (
+      <>
+        Figma Make turns ideas into wireframes and flows quickly. The real win is flexibility: I can explore more
+        directions before committing to one. That’s how{' '}
+        <a href="https://arpansheth.digital/tastex.html" target="_blank" rel="noreferrer">tasteX</a> went from
+        concept to a deployed UAT build in under five months.
+      </>
+    ),
+    icon: 'spark',
   },
   {
-    title: 'Prototype in real code',
-    text: 'I build interactive prototypes with AI pair-programming, so stakeholders click through real flows instead of static frames. This site is one of them.',
-    icon: 'code' as const,
+    title: 'Refining the decision, not just the screen',
+    tools: ['Claude', 'Figma AI'],
+    text: 'Claude is my design-thinking partner: it tests my assumptions, checks flows against heuristics and argues the other side. Figma AI’s auto layout and variant generation take care of the repetitive structural work.',
+    icon: 'shield',
   },
   {
-    title: 'Check before shipping',
-    text: 'AI reviews help me catch accessibility gaps, inconsistent tokens and copy that drifts from the design system.',
-    icon: 'shield' as const,
+    title: 'Shipping faster, without skipping steps',
+    tools: ['Codex', 'Claude Code', 'GitHub Copilot'],
+    text: 'Codex and GitHub Copilot speed up code generation, and Claude Code handles deployment and CI/CD. A three-portal product that once took a year to build now ships in under five months.',
+    icon: 'code',
   },
 ]
+
+function scrollToId(e: MouseEvent, id: string) {
+  e.preventDefault()
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
 
 export function Home() {
   const reduce = useReducedMotion()
@@ -48,7 +65,7 @@ export function Home() {
           </p>
           <div className="h-actions">
             {first && <Link className="h-btn" to={`/case-studies/${first.slug}`}>Start the first case study</Link>}
-            <a className="h-btn h-btn--ghost" href="#ai">How I design with AI</a>
+            <a className="h-btn h-btn--ghost" href="#ai" onClick={(e) => scrollToId(e, 'ai')}>How I design with AI</a>
           </div>
         </div>
 
@@ -130,9 +147,10 @@ export function Home() {
       <section className="h-section" id="ai" aria-labelledby="ai-h">
         <div className="h-ai-head">
           <div>
-            <h2 id="ai-h">How I design with AI</h2>
+            <h2 id="ai-h">How I design in the age of AI</h2>
             <p className="h-section-lede">
-              AI doesn’t replace design judgment. It gives me more time for it. Here’s where it sits in my process.
+              Projects start with scattered ideas and unanswered questions. AI helps me get from there to a
+              decision faster, without making the decision for me. Here’s where it shows up in my workflow.
             </p>
           </div>
           <img src={narrator.extras.useThis} alt="Arpan holding a brain, saying use this" className="h-ai-sticker sticker" />
@@ -142,11 +160,21 @@ export function Home() {
             <li key={s.title} className="h-ai-step">
               <span className="h-ai-icon"><StepIcon name={s.icon} /></span>
               <h3>{s.title}</h3>
+              <ul className="h-ai-tools" aria-label="Tools">
+                {s.tools.map((t) => <li key={t}>{t}</li>)}
+              </ul>
               <p>{s.text}</p>
             </li>
           ))}
         </ol>
-        <p className="h-draft">Draft copy. Edit these steps to match your own workflow.</p>
+        <div className="h-ai-outro">
+          <h3>What AI has actually changed</h3>
+          <p>
+            Not that I design faster, but that I get stuck less. Less time stalled at the start, more time on what
+            matters, and more directions explored before I commit. The tools will keep changing. The advantage is
+            staying curious enough to change with them.
+          </p>
+        </div>
       </section>
 
       {/* ---------- Closing ---------- */}
