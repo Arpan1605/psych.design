@@ -3,6 +3,8 @@
 .aiw p { color: var(--ink-soft); line-height: 1.6; max-width: 62ch; }
 .aiw p a { color: var(--highlight); text-decoration: underline; text-underline-offset: 2px; }
 .aiw-star { color: var(--highlight); }
+.h-ai-tools { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.h-ai-tools li { font-size: 0.78rem; font-weight: 600; color: #e5d6ff; padding: 0.2rem 0.55rem; border-radius: 999px; background: rgba(185, 140, 245, 0.14); box-shadow: inset 0 0 0 1px rgba(185, 140, 245, 0.35); }
 
 /* hero */
 .aiw-hero {

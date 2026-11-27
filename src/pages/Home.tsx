@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { caseStudies } from '../data/caseStudies'
@@ -7,31 +6,27 @@ import { Brain } from '../components/Brain'
 import { psychColor } from '../components/PsychMeter'
 import '../styles/home.css'
 
-/** How Arpan works with AI, from arpansheth.digital/ai-workflow.html */
-const aiSteps: { title: string; tools: string[]; text: ReactNode; icon: 'search' | 'spark' | 'shield' | 'code' }[] = [
+/** How Arpan works with AI. Draft copy: edit to match the real process. */
+const aiSteps = [
   {
-    title: 'Making sense of the chaos',
-    tools: ['Claude', 'ChatGPT', 'Stakeholder Research'],
-    text: 'Every project starts with the same goal: getting to clarity before I open Figma.',
-    icon: 'search',
+    title: 'Understand faster',
+    text: 'AI helps me sort interview notes, support tickets and reviews into themes, so I spend my time on the patterns, not the spreadsheet.',
+    icon: 'search' as const,
   },
   {
-    title: 'Exploring before committing',
-    tools: ['Figma Make'],
-    text: 'The biggest advantage isn’t speed — it’s flexibility. More directions explored before committing to one.',
-    icon: 'spark',
+    title: 'Explore wider',
+    text: 'I sketch the idea, then use AI to push out variations and edge cases I might have missed, before narrowing down with real constraints.',
+    icon: 'spark' as const,
   },
   {
-    title: 'Refining the decision, not just the screen',
-    tools: ['Claude', 'Figma AI'],
-    text: 'This is where most of the real thinking happens: pressure-testing assumptions and arguing the other side before I commit.',
-    icon: 'shield',
+    title: 'Prototype in real code',
+    text: 'I build interactive prototypes with AI pair-programming, so stakeholders click through real flows instead of static frames. This site is one of them.',
+    icon: 'code' as const,
   },
   {
-    title: 'Shipping faster, without skipping steps',
-    tools: ['Codex', 'Claude Code', 'GitHub Copilot'],
-    text: 'An AI-orchestrated pipeline: a three-portal product shipped in under five months, not a traditional year.',
-    icon: 'code',
+    title: 'Check before shipping',
+    text: 'AI reviews help me catch accessibility gaps, inconsistent tokens and copy that drifts from the design system.',
+    icon: 'shield' as const,
   },
 ]
 
@@ -135,10 +130,9 @@ export function Home() {
       <section className="h-section" id="ai" aria-labelledby="ai-h">
         <div className="h-ai-head">
           <div>
-            <h2 id="ai-h">How I design in the age of AI</h2>
+            <h2 id="ai-h">How I design with AI</h2>
             <p className="h-section-lede">
-              Most projects don’t start with clarity. AI helps me move from uncertainty to a confident decision —
-              not to make the decisions for me, but to help me think faster.
+              AI doesn’t replace design judgment. It gives me more time for it. Here’s where it sits in my process.
             </p>
           </div>
           <img src={narrator.extras.useThis} alt="Arpan holding a brain, saying use this" className="h-ai-sticker sticker" />
@@ -148,16 +142,10 @@ export function Home() {
             <li key={s.title} className="h-ai-step">
               <span className="h-ai-icon"><StepIcon name={s.icon} /></span>
               <h3>{s.title}</h3>
-              <ul className="h-ai-tools" aria-label="Tools">
-                {s.tools.map((t) => <li key={t}>{t}</li>)}
-              </ul>
               <p>{s.text}</p>
             </li>
           ))}
         </ol>
-        <p className="h-ai-more">
-          <a className="h-btn" href="#/ai-workflow" target="_blank" rel="noopener">Read the full AI workflow</a>
-        </p>
       </section>
 
       {/* ---------- Closing ---------- */}
