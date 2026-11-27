@@ -1,0 +1,19 @@
+/* Real screenshots inside the phone frame */
+.phone-screen:has(.shot),
+.mini-phone-screen:has(.shot) { padding-top: 0; background: #111; }
+
+.shot { position: absolute; inset: 0; display: flex; flex-direction: column; overflow: hidden; background: #111; }
+.phone-screen, .mini-phone-screen { position: relative; }
+.shot--top { justify-content: flex-start; }
+.shot--center { justify-content: center; }
+.shot--bottom { justify-content: flex-end; }
+
+.shot-frame { position: relative; width: 100%; flex: 0 0 auto; }
+.shot-frame img { display: block; width: 100%; height: auto; user-select: none; }
+
+.shot-hi {
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 0 0 0 3px #ffd84a, 0 0 0 9999px rgba(0, 0, 0, 0.45), 0 0 22px 4px rgba(255, 216, 74, 0.5);
+  pointer-events: none;
+}
