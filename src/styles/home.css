@@ -182,9 +182,7 @@ a.h-study:hover { box-shadow: inset 0 0 0 1px rgba(255, 216, 74, 0.6), 0 10px 30
 .h-ai-tools { list-style: none; padding: 0; margin: 0 0 0.75rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .h-ai-tools li { font-size: 0.78rem; font-weight: 600; color: #e5d6ff; padding: 0.2rem 0.55rem; border-radius: 999px; background: rgba(185, 140, 245, 0.14); box-shadow: inset 0 0 0 1px rgba(185, 140, 245, 0.35); }
 .h-ai-step p a { color: var(--highlight); text-decoration: underline; text-underline-offset: 2px; }
-.h-ai-outro { margin-top: 1.25rem; padding: 1.4rem 1.5rem; border-radius: 18px; border-left: 4px solid var(--highlight); background: rgba(255, 216, 74, 0.06); }
-.h-ai-outro h3 { font: 700 1.2rem / 1.2 var(--font-tight); color: #fff; margin-bottom: 0.4rem; }
-.h-ai-outro p { color: var(--ink-soft); line-height: 1.55; max-width: 70ch; }
+.h-ai-more { margin-top: 1.5rem; }
 #ai { scroll-margin-top: 1.5rem; }
 
 /* closing */

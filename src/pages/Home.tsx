@@ -1,4 +1,4 @@
-import type { MouseEvent, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { caseStudies } from '../data/caseStudies'
@@ -11,41 +11,29 @@ import '../styles/home.css'
 const aiSteps: { title: string; tools: string[]; text: ReactNode; icon: 'search' | 'spark' | 'shield' | 'code' }[] = [
   {
     title: 'Making sense of the chaos',
-    tools: ['Claude', 'ChatGPT', 'Stakeholder research'],
-    text: 'The goal is getting to clarity before I open Figma. I use Claude and ChatGPT to break down PRDs, meeting notes and stakeholder feedback, surface gaps and open questions, then take those back into research and workshops.',
+    tools: ['Claude', 'ChatGPT', 'Stakeholder Research'],
+    text: 'Every project starts with the same goal: getting to clarity before I open Figma.',
     icon: 'search',
   },
   {
     title: 'Exploring before committing',
     tools: ['Figma Make'],
-    text: (
-      <>
-        Figma Make turns ideas into wireframes and flows quickly. The real win is flexibility: I can explore more
-        directions before committing to one. That’s how{' '}
-        <a href="https://arpansheth.digital/tastex.html" target="_blank" rel="noreferrer">tasteX</a> went from
-        concept to a deployed UAT build in under five months.
-      </>
-    ),
+    text: 'The biggest advantage isn’t speed — it’s flexibility. More directions explored before committing to one.',
     icon: 'spark',
   },
   {
     title: 'Refining the decision, not just the screen',
     tools: ['Claude', 'Figma AI'],
-    text: 'Claude is my design-thinking partner: it tests my assumptions, checks flows against heuristics and argues the other side. Figma AI’s auto layout and variant generation take care of the repetitive structural work.',
+    text: 'This is where most of the real thinking happens: pressure-testing assumptions and arguing the other side before I commit.',
     icon: 'shield',
   },
   {
     title: 'Shipping faster, without skipping steps',
     tools: ['Codex', 'Claude Code', 'GitHub Copilot'],
-    text: 'Codex and GitHub Copilot speed up code generation, and Claude Code handles deployment and CI/CD. A three-portal product that once took a year to build now ships in under five months.',
+    text: 'An AI-orchestrated pipeline: a three-portal product shipped in under five months, not a traditional year.',
     icon: 'code',
   },
 ]
-
-function scrollToId(e: MouseEvent, id: string) {
-  e.preventDefault()
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
 
 export function Home() {
   const reduce = useReducedMotion()
@@ -65,7 +53,7 @@ export function Home() {
           </p>
           <div className="h-actions">
             {first && <Link className="h-btn" to={`/case-studies/${first.slug}`}>Start the first case study</Link>}
-            <a className="h-btn h-btn--ghost" href="#ai" onClick={(e) => scrollToId(e, 'ai')}>How I design with AI</a>
+            <a className="h-btn h-btn--ghost" href="#/ai-workflow" target="_blank" rel="noopener">How I design with AI</a>
           </div>
         </div>
 
@@ -149,8 +137,8 @@ export function Home() {
           <div>
             <h2 id="ai-h">How I design in the age of AI</h2>
             <p className="h-section-lede">
-              Projects start with scattered ideas and unanswered questions. AI helps me get from there to a
-              decision faster, without making the decision for me. Here’s where it shows up in my workflow.
+              Most projects don’t start with clarity. AI helps me move from uncertainty to a confident decision —
+              not to make the decisions for me, but to help me think faster.
             </p>
           </div>
           <img src={narrator.extras.useThis} alt="Arpan holding a brain, saying use this" className="h-ai-sticker sticker" />
@@ -167,14 +155,9 @@ export function Home() {
             </li>
           ))}
         </ol>
-        <div className="h-ai-outro">
-          <h3>What AI has actually changed</h3>
-          <p>
-            Not that I design faster, but that I get stuck less. Less time stalled at the start, more time on what
-            matters, and more directions explored before I commit. The tools will keep changing. The advantage is
-            staying curious enough to change with them.
-          </p>
-        </div>
+        <p className="h-ai-more">
+          <a className="h-btn" href="#/ai-workflow" target="_blank" rel="noopener">Read the full AI workflow</a>
+        </p>
       </section>
 
       {/* ---------- Closing ---------- */}

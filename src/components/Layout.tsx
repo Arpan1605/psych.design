@@ -8,6 +8,7 @@ export function Layout() {
         <Link to="/" className="wordmark">Arpan Sheth</Link>
         <nav aria-label="Main">
           <NavLink to="/" end>Case studies</NavLink>
+          <NavLink to="/ai-workflow">AI workflow</NavLink>
           <NavLink to="/about">About</NavLink>
           <a href="https://arpansheth.digital" target="_blank" rel="noreferrer">Portfolio</a>
         </nav>

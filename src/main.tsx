@@ -6,6 +6,7 @@ import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
 import { CaseStudy } from './pages/CaseStudy'
 import { About } from './pages/About'
+import { AiWorkflow } from './pages/AiWorkflow'
 import { NotFound } from './pages/NotFound'
 import './styles/global.css'
 
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
+            <Route path="ai-workflow" element={<AiWorkflow />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
