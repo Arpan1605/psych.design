@@ -39,7 +39,7 @@ export function Home() {
       {/* ---------- Hero ---------- */}
       <section className="h-hero">
         <div className="h-hero-text">
-          <span className="pill"><span className="pill-dot" />Product designer, healthcare UX</span>
+          <span className="pill pill--live"><span className="pill-dot" />Product designer</span>
           <h1>Every screen changes how someone feels.</h1>
           <p className="h-tagline">…comic-style UX case studies about the psychology behind every tap.</p>
           <p className="h-lede">
