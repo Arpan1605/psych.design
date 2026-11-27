@@ -17,8 +17,12 @@ export function KeyHint() {
         <span className="key key--down">▼</span>
         <motion.span className="key key--right" {...press}>▶</motion.span>
       </div>
-      <p className="keyhint-note">
+      <p className="keyhint-note keyhint-note--keys">
         Use your <strong>arrow keys</strong>
+        <br />to move through the story
+      </p>
+      <p className="keyhint-note keyhint-note--touch">
+        <strong>Tap</strong> anywhere or use <strong>›</strong>
         <br />to move through the story
       </p>
     </div>

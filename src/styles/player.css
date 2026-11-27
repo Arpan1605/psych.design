@@ -148,6 +148,7 @@
   font: italic 400 1.3rem / 1.15 var(--font-note);
 }
 .keyhint-note strong { font-weight: 700; font-size: 1.5rem; }
+.keyhint-note--touch { display: none; }
 
 /* ---------- Story panels ---------- */
 .panel {
@@ -608,8 +609,58 @@
   .comic .phone { height: 300px; }
   .comic-bubble { font-size: 1.1rem; }
   .panel-card { justify-self: center; padding-top: 1rem; }
-  .chevron { top: auto; bottom: 0.25rem; translate: none; width: 44px; height: 56px; }
-  .rail { flex-direction: row; right: 50%; translate: 50% 0; bottom: auto; top: 0.6rem; }
+  /* bottom nav: solid round buttons, with room reserved so content never sits under them */
+  .comic-stage { padding-bottom: 5.5rem; grid-template-rows: max-content; }
+  .panel, .summary { max-height: none; }
+  .chevron { top: auto; bottom: 0.9rem; translate: none; width: 48px; height: 48px; border-radius: 50%; background: rgba(20, 16, 14, 0.9); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.1); }
+  .chevron svg { width: 22px; height: 22px; }
+  .chevron--prev { left: 1rem; }
+  .chevron--next { right: 1rem; }
+  .chevron:disabled { opacity: 0; pointer-events: none; }
+  .chevron, .rail { z-index: 3 !important; }
+  .comic::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 3.6rem;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(rgba(22, 18, 15, 0.95) 60%, rgba(22, 18, 15, 0));
+  }
+  .comic::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5.5rem;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(rgba(22, 18, 15, 0), rgba(22, 18, 15, 0.92) 55%);
+  }
+
+  /* cover: no keyboard on phones */
+  .keys, .keyhint-note--keys { display: none; }
+  .keyhint-note--touch { display: block; margin-top: 0; text-align: center; }
+
+  /* partial-screenshot slides: big screenshot first, then Arpan underneath */
+  .panel--card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'meter' 'caption' 'phone' 'cast' 'goals' 'card';
+  }
+  .panel--card .screen-card { width: 100%; }
+  .panel--card .panel-cast { justify-self: center; }
+
+  /* journey recap bubble: keep it on screen near the edges */
+  .journey-avatar--left .journey-bubble { justify-self: start; }
+  .journey-avatar--right .journey-bubble { justify-self: end; }
+  .journey-avatar--high.journey-avatar--left .journey-bubble { right: auto; left: calc(100% - 6px); }
+  .journey-avatar--high.journey-avatar--left .journey-bubble::after { right: auto; left: -18px; border-left: 3px solid #1a1a1a; border-right: 0; clip-path: polygon(100% 0, 0 50%, 100% 100%); }
+  .journey-thumb { align-items: center; }
+  .mini-note { align-self: center; }
+  .rail { flex-direction: row; right: 50%; translate: 50% 0; bottom: auto; top: 0.6rem; padding: 4px; gap: 4px; border-radius: 999px; background: rgba(20, 16, 14, 0.92); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.08); }
   .rail-btn { width: 40px; height: 40px; }
   .rail-toast { right: auto; top: 48px; bottom: auto; }
 }

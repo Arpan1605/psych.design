@@ -57,6 +57,23 @@ export function CaseStudy() {
     return () => window.removeEventListener('keydown', onKey)
   }, [next, prev])
 
+  // phones: the stage scrolls, so bring a newly pinned card into view, and start each new slide at the top
+  const curSlide = frames[i]?.slide
+  useEffect(() => {
+    if (!window.matchMedia('(max-width: 820px)').matches) return
+    const stage = document.querySelector<HTMLElement>('.comic-stage')
+    if (!stage) return
+    const t = setTimeout(() => {
+      // the pinned card is always the last thing on a phone layout, so scroll to the end
+      const hasCard = !!stage.querySelector('.pin-card')
+      stage.scrollTo({ top: hasCard ? stage.scrollHeight : 0, behavior: 'smooth' })
+    }, 700)
+    return () => clearTimeout(t)
+  }, [i])
+  useEffect(() => {
+    document.querySelector<HTMLElement>('.comic-stage')?.scrollTo({ top: 0 })
+  }, [curSlide])
+
   if (!cs) return <NotFound />
 
   const { slide: si, beat: bi } = frames[i]

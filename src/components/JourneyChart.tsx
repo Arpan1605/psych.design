@@ -93,7 +93,7 @@ export function JourneyChart({ start, points, upto }: { start: number; points: J
       {/* avatar + recap bubble travel to the current point */}
       {cur && (
         <motion.div
-          className={`journey-avatar ${y(cur.psych) / H < 0.3 ? 'journey-avatar--high' : ''}`}
+          className={`journey-avatar ${y(cur.psych) / H < 0.3 ? 'journey-avatar--high' : ''} ${x(ci) / W < 0.3 ? 'journey-avatar--left' : x(ci) / W > 0.7 ? 'journey-avatar--right' : ''}`}
           initial={false}
           animate={{ left: pctX(ci), top: pctY(cur.psych) }}
           transition={{ type: 'spring', stiffness: 120, damping: 18 }}
