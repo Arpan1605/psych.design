@@ -41,9 +41,7 @@ const stages: { title: string; tools: string[]; bubble: string; sticker: string;
         </p>
         <p>
           When a new direction costs ten minutes instead of an afternoon, I’m willing to explore more of them before
-          committing to one, which is exactly how{' '}
-          <a href="https://arpansheth.digital/tastex.html" target="_blank" rel="noreferrer">tasteX</a> went from
-          concept to a deployed UAT build in under 5 months.
+          committing to one.
         </p>
       </>
     ),
@@ -66,7 +64,7 @@ const stages: { title: string; tools: string[]; bubble: string; sticker: string;
   {
     title: 'Shipping faster, without skipping steps',
     tools: ['Codex', 'Claude Code', 'GitHub Copilot'],
-    bubble: 'Shipped in under five months.',
+    bubble: 'Directing the pipeline, not working through it screen by screen.',
     sticker: paperPlane,
     alt: 'Arpan riding a paper plane',
     body: (
@@ -75,10 +73,6 @@ const stages: { title: string; tools: string[]; bubble: string; sticker: string;
           On projects where I’m also driving implementation, Codex and GitHub Copilot accelerate code generation, and
           Claude Code handles deployment and CI/CD — directing an AI-orchestrated pipeline rather than working through
           it screen by screen.
-        </p>
-        <p>
-          It’s the difference between a three-portal product taking a traditional year to build and one that shipped
-          in under five months.
         </p>
       </>
     ),
