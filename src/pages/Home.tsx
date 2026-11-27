@@ -41,7 +41,7 @@ export function Home() {
         <div className="h-hero-text">
           <span className="pill"><span className="pill-dot" />Product designer, healthcare UX</span>
           <h1>Every screen changes how someone feels.</h1>
-          <p className="h-tagline">…comic-style UX case studies, powered by psychology and AI.</p>
+          <p className="h-tagline">…comic-style UX case studies about the psychology behind every tap.</p>
           <p className="h-lede">
             I’m Arpan, a product designer working on enterprise healthcare software. Each case study walks
             through a real flow one screen at a time, tracks the user’s psych level, and shows what I’d fix.
